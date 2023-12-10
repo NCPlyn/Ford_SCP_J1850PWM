@@ -1,0 +1,16 @@
+priority to from  data(most times first two do not change)
+A1 7B 10   02 00             (last 2 by how much, kph/10 at message interval of 50ms)
+81 49 10   10 00             (last 2 = temp+40, 16-low|96-middle|a0-max, every sec)
+A1 29 10   02 00 00          (last 4 = kph*128, needle is off by little, every 50ms)
+81 1B 10   25 00 00 00 00 00 (next 6 after first 2 = rpm*1024, next 2 rate of change??, last 2 = throttle 00-b1, every 50ms)
+81 88 10   30 01             (last 2 = CEL, 01 off, 02 on, 03 blink, every sec)
+41 73 10   14 20             (last 2 = alternator, 21 on, 20 off, once)
+41 88 10   02                (turns off gear light, once, idk how to turn on)
+
+no idea what these do:
+81 3B 10   04 40
+41 53 10   3B 10 24 12 24 
+41 88 10   14 
+41 3B 10   3B 81 03 82 
+41 73 10   14 21 
+81 3B 10   04 40
