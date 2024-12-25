@@ -1,7 +1,7 @@
 # Ford_SCP_J1850PWM
 I have made this to control OEM Ford Focus MK1 instrument cluster with Arduino & ELM327
 
-If anyone has Fords SCP J1850 protocol documents, hmu :)
+**If anyone has Fords SCP J1850 protocol documents, hmu :)**
 
 You need ELM327 which actually does J1850PWM and has desoldarable BT module.
 
@@ -12,11 +12,18 @@ Connections:
 - Connect OBD pin 2 (J1850+) to pin 13 on cluster (looking from back, bottom row, most right pin). Connect OBD pin 10 (J1850-) to pin 26 on cluster (top row, most right).
 - Connect GND to pin 2 on cluster (bottom row, second pin from left) and 12V to pins 14&16 (top row, first and third pin from left)
 
-File 'ign-start-drive-dump_notime.txt' has a dump of couple second SCP communication from my 2001 Ford Focus 1.6 FYDA, first 2 bytes are priority, next 2 address of reciever, next 2 address of sender, next bytes are the message and last 2 are checksum, but without timestamps.
-File 'ign-start-dump_withtime.txt' is the same as previous dump, but with timestamps and I didn't move, only revved the engine.
+### Files in this repository:
+- File 'ign-start-drive-dump_notime.txt' has a dump of couple second SCP communication from my 2001 Ford Focus 1.6 FYDA, first 2 bytes are priority, next 2 address of reciever, next 2 address of sender, next bytes are the message and last 2 are checksum, but without timestamps.
+- File 'ign-start-dump_withtime.txt' is the same as previous dump, but with timestamps and I didn't move, only revved the engine.
+- File 'PoC-old.ino' has old Arduino PoC code where you can set values of Temperature, Speed and RPM. The cluster should react, but will be jerky.
+- File 'Speeduino-FordIC.ino' has working code which takes interrupt from Speeduino, Hall-effect sensor for speed and temperature and shows data on the cluster without jerking.
 
-The PoC-old.ino file has old Arduino PoC code where you can set values of Temperature, Speed and RPM. The cluster should react, but will be jerky.
-The Speeduino-FordIC.ino has working code which takes interrupt from Speeduino, Hall-effect sensor for speed and temperature and shows data on the cluster without jerking.
+## Photos
+<p float="middle">
+  <img src="https://github.com/user-attachments/assets/3502d18d-129f-4a81-b696-4d47cfc4dfd8" width="49%" />
+  <img src="https://github.com/user-attachments/assets/d9ca004e-42bb-4f1f-a4a6-487672b57b60" width="49%" />
+</p>
+
 
 ## Focus SCP message guide
 ```
