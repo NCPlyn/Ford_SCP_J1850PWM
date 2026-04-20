@@ -11,7 +11,7 @@ Connections:
 - Connect GND (pin 4&5, middle two of the bigger row) and 12v (pin 16) to the OBD port. (Lookup picture of OBD pinout, hard to explain due orientation)
 - Connect OBD pin 2 (J1850+) to pin 13 on cluster (looking from back, bottom row, most right pin). Connect OBD pin 10 (J1850-) to pin 26 on cluster (top row, most right).
 - Connect GND to pin 2 on cluster (bottom row, second pin from left) and 12V to pins 14&16 (top row, first and third pin from left)
-- On J1850+ pin needs 180R pull up resistor to 5V and J1850- needs 180R pull down resistor to GND.
+- **On J1850+ pin needs 180R pull up resistor to 5V and J1850- needs 180R pull down resistor to GND.**
 
 ### Files in this repository:
 - File 'ign-start-drive-dump_notime.txt' has a dump of couple second SCP communication from my 2001 Ford Focus 1.6 FYDA, first 2 bytes are priority, next 2 address of reciever, next 2 address of sender, next bytes are the message and last 2 are checksum, but without timestamps.
@@ -53,4 +53,20 @@ To get the cluster working, the messages have to be send in such way:
 --Temperature, then odometer, then speed, then RPM
 -Then second group (the next 50ms) send:
 --CEL, then odometer, then speed, then RPM
+```
+
+## ELM327 serial help
+```
+Before every next command append: "AT (cmd)"
+Z - Restart ELM
+AL - Enable/Disable long msgs
+L1/0 - Enable/Disable line feed after msg
+S1/0 - Enable/Disable spaces in msgs
+H1/0 - Enable/Disable showing header bytes
+SP A1 - Protocol AUTO + J1850 PWM
+DP - Describe current active protocol
+MA - Monitor all
+MT (hh) - Monitor from (hh)
+MR (hh) - Monitor to (hh)
+SH (xx) (yy) (zz) - Set headers
 ```
